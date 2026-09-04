@@ -1,0 +1,561 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AgricultureStats {
+  averageYield: Float!
+  irrigationCoverage: Float!
+  topCrops: [CropProduction!]!
+  totalProduction: Float!
+}
+
+type AuthResponse {
+  accessToken: String!
+  expiresIn: Float!
+  refreshToken: String!
+  tokenType: String!
+  user: User!
+}
+
+type BenefitStats {
+  ameliorationSol: Int!
+  augmentationRendement: Int!
+  autre: Int!
+  diversificationRevenus: Int!
+  economieEau: Int!
+  meilleureAdaptation: Int!
+  reductionErosion: Int!
+  reductionIntrants: Int!
+}
+
+input ChangePasswordInput {
+  confirmPassword: String!
+  currentPassword: String!
+  newPassword: String!
+}
+
+type ClimatePractice {
+  adoptionDate: String!
+  challenges: String
+  createdAt: DateTime!
+  description: String
+  farm: Farm!
+  id: Int!
+  isStillPracticed: Boolean!
+  perceivedBenefit: String
+  practiceType: String!
+  recommendation: String
+  satisfactionRating: Float
+  sourceOfKnowledge: String
+  specificTechnique: String
+  surface: Float!
+  updatedAt: DateTime!
+  yieldImprovement: Float
+}
+
+input CreateFarmInput {
+  commune: String!
+  description: String
+  district: String!
+  farmerGroup: String
+  fokontany: String
+  gpsLatitude: String
+  gpsLongitude: String
+  isBeneficiary: Boolean
+  name: String!
+  notes: String
+  phoneNumber: String
+  programAffiliation: String
+  region: String!
+  totalSurface: Float!
+  userId: Int!
+  village: String!
+}
+
+input CreateHarvestInput {
+  buyer: String
+  harvestDate: String!
+  notes: String
+  plotId: Int!
+  quality: String
+  quantity: Float!
+  salePrice: Float
+  season: String!
+  unit: String
+}
+
+input CreatePlotInput {
+  actualYield: Float
+  cropType: String!
+  cropVariety: String
+  description: String
+  expectedYield: Float
+  farmId: Int!
+  harvestDate: DateTime
+  irrigationType: String
+  name: String!
+  notes: String
+  plantingDate: DateTime
+  slope: Float
+  soilPH: Float
+  soilTestDate: DateTime
+  soilType: String
+  surface: Float!
+}
+
+input CreatePracticeInput {
+  adoptionDate: DateTime!
+  challenges: String
+  description: String
+  farmId: Int!
+  isStillPracticed: Boolean
+  perceivedBenefit: String
+  practiceType: String!
+  recommendation: String
+  satisfactionRating: Float
+  sourceOfKnowledge: String
+  specificTechnique: String
+  surface: Float!
+  yieldImprovement: Float
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type CropProduction {
+  averageYield: Float!
+  cropType: String!
+  totalQuantity: Float!
+  totalSurface: Float!
+}
+
+type CropStatItem {
+  averageYield: Float!
+  count: Int!
+  cropType: String!
+  totalSurface: Float!
+}
+
+input DashboardFiltersInput {
+  district: String
+  region: String
+  year: String
+}
+
+type DashboardResponse {
+  agriculture: AgricultureStats!
+  lastUpdated: DateTime!
+  overview: OverviewStats!
+  regionalDistribution: [RegionData!]!
+  resilience: ResilienceStats!
+  trends: TrendsStats!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DeleteAllResponse {
+  count: Int!
+  message: String!
+}
+
+type Farm {
+  commune: String!
+  createdAt: DateTime!
+  description: String
+  district: String!
+  farmerGroup: String
+  fokontany: String
+  gpsLatitude: String
+  gpsLongitude: String
+  id: Int!
+  isBeneficiary: Boolean!
+  name: String!
+  notes: String
+  phoneNumber: String
+  programAffiliation: String
+  region: String!
+  totalSurface: Float!
+  updatedAt: DateTime!
+  user: User!
+  village: String!
+}
+
+input FarmFiltersInput {
+  commune: String
+  district: String
+  isBeneficiary: Boolean
+  limit: Float
+  offset: Float
+  programAffiliation: String
+  region: String
+  searchTerm: String
+  userId: Float
+  village: String
+}
+
+type FarmPagination {
+  data: [Farm!]!
+  page: Int!
+  total: Int!
+  totalPages: Int!
+}
+
+type FarmStats {
+  averageSurface: Float!
+  beneficiaryCount: Int!
+  beneficiaryRate: Float!
+  totalFarms: Int!
+  totalSurface: Float!
+}
+
+input ForgotPasswordInput {
+  email: String!
+}
+
+type ForgotPasswordResponse {
+  message: String!
+}
+
+type Harvest {
+  buyer: String
+  createdAt: DateTime!
+  harvestDate: String!
+  id: Int!
+  notes: String
+  plot: Plot!
+  quality: String
+  quantity: Float!
+  salePrice: Float
+  season: String!
+  totalRevenue: Float
+  unit: String
+  updatedAt: DateTime!
+  yieldPerHectare: Float
+}
+
+input HarvestFiltersInput {
+  endDate: String
+  farmId: Float
+  limit: Float
+  maxQuantity: Float
+  minQuantity: Float
+  offset: Float
+  plotId: Float
+  quality: String
+  searchTerm: String
+  season: String
+  startDate: String
+}
+
+type HarvestStats {
+  averageYield: Float!
+  seasonStats: [SeasonStat!]!
+  topCrops: [TopCrop!]!
+  totalHarvests: Int!
+  totalQuantity: Float!
+  totalRevenue: Float!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  changePassword(input: ChangePasswordInput!): Boolean!
+  createFarm(input: CreateFarmInput!): Farm!
+  createHarvest(input: CreateHarvestInput!): Harvest!
+  createPlot(input: CreatePlotInput!): Plot!
+  createPractice(input: CreatePracticeInput!): ClimatePractice!
+  createUser(input: CreateUserInput!): User!
+  deleteAllFarms: DeleteAllResponse!
+  deleteFarm(id: Int!): Boolean!
+  deleteHarvest(id: Int!): Boolean!
+  deletePlot(id: Int!): Boolean!
+  deletePractice(id: Int!): Boolean!
+  deleteUser(id: Int!): Boolean!
+  forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
+  login(input: LoginInput!): AuthResponse!
+  promoteUser(input: PromoteUserInput!): User!
+  refreshToken(input: RefreshTokenInput!): AuthResponse!
+  register(input: RegisterInput!): AuthResponse!
+  resetPassword(input: ResetPasswordInput!): ResetPasswordResponse!
+  updateFarm(input: UpdateFarmInput!): Farm!
+  updateHarvest(input: UpdateHarvestInput!): Harvest!
+  updatePlot(input: UpdatePlotInput!): Plot!
+  updatePractice(input: UpdatePracticeInput!): ClimatePractice!
+}
+
+type OverviewStats {
+  practiceAdoptionRate: Float!
+  totalFarms: Int!
+  totalHarvests: Int!
+  totalPlots: Int!
+  totalPractices: Int!
+  totalProduction: Float!
+  totalSurface: Float!
+  totalUsers: Int!
+  womenFarmers: Int!
+}
+
+type Plot {
+  actualYield: Float
+  createdAt: DateTime!
+  cropType: String!
+  cropVariety: String
+  description: String
+  expectedYield: Float
+  farm: Farm!
+  harvestDate: DateTime
+  id: Int!
+  irrigationType: String
+  name: String!
+  notes: String
+  plantingDate: DateTime
+  slope: Float
+  soilPH: Float
+  soilTestDate: DateTime
+  soilType: String
+  surface: Float!
+  updatedAt: DateTime!
+}
+
+input PlotFiltersInput {
+  cropType: String
+  cropVariety: String
+  farmId: Float
+  hasHarvest: Boolean
+  irrigationType: String
+  limit: Float
+  maxSurface: Float
+  minSurface: Float
+  offset: Float
+  searchTerm: String
+  soilType: String
+}
+
+type PlotStats {
+  averageSurface: Float!
+  cropStats: [CropStatItem!]!
+  totalPlots: Int!
+  totalSurface: Float!
+}
+
+input PracticeFiltersInput {
+  farmId: Float
+  isStillPracticed: Boolean
+  limit: Float
+  maxSurface: Float
+  minSurface: Float
+  offset: Float
+  perceivedBenefit: String
+  practiceType: String
+  searchTerm: String
+  sourceOfKnowledge: String
+}
+
+type PracticeStatItem {
+  averageYieldImprovement: Float!
+  count: Int!
+  practiceType: String!
+  totalSurface: Float!
+}
+
+type PracticeStats {
+  averageSurface: Float!
+  benefitStats: BenefitStats!
+  practiceStats: [PracticeStatItem!]!
+  stillPracticedRate: Float!
+  totalPractices: Int!
+  totalSurface: Float!
+}
+
+input PromoteUserInput {
+  role: String!
+  userId: Float!
+}
+
+type Query {
+  allFarms: [Farm!]!
+  beneficiaryFarms: [Farm!]!
+  dashboard(filters: DashboardFiltersInput): DashboardResponse!
+  farm(id: Int!): Farm!
+  farmStats(region: String): FarmStats!
+  farms(filters: FarmFiltersInput): [Farm!]!
+  farmsByProgram(program: String!): [Farm!]!
+  farmsByRegion(region: String!): [Farm!]!
+  farmsCount: Int!
+  farmsPaginated(limit: Int! = 10, page: Int! = 1): FarmPagination!
+  harvest(id: Int!): Harvest!
+  harvestStats(farmId: Float): HarvestStats!
+  harvests(filters: HarvestFiltersInput): [Harvest!]!
+  harvestsByPlot(plotId: Int!): [Harvest!]!
+  healthCheck: Boolean!
+  me: User!
+  plot(id: Int!): Plot!
+  plotStats(farmId: Float): PlotStats!
+  plots(filters: PlotFiltersInput): [Plot!]!
+  plotsByFarm(farmId: Int!): [Plot!]!
+  practice(id: Int!): ClimatePractice!
+  practiceStats(farmId: Float): PracticeStats!
+  practices(filters: PracticeFiltersInput): [ClimatePractice!]!
+  practicesByFarm(farmId: Int!): [ClimatePractice!]!
+  profile: User!
+  user(id: Int!): User!
+  users: [User!]!
+  verifyResetToken(input: VerifyResetTokenInput!): VerifyResetTokenResponse!
+}
+
+input RefreshTokenInput {
+  refreshToken: String!
+}
+
+type RegionData {
+  farmsCount: Int!
+  region: String!
+  totalSurface: Float!
+}
+
+input RegisterInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+input ResetPasswordInput {
+  confirmPassword: String!
+  newPassword: String!
+  token: String!
+}
+
+type ResetPasswordResponse {
+  message: String!
+}
+
+type ResilienceStats {
+  adoptionRate: Float!
+  averageYieldImprovement: Float!
+  stillPracticedRate: Float!
+  topPractices: [String!]!
+  totalPractices: Int!
+}
+
+type SeasonStat {
+  count: Int!
+  season: String!
+  totalQuantity: Float!
+  totalRevenue: Float!
+}
+
+type TopCrop {
+  count: Int!
+  crop: String!
+  totalQuantity: Float!
+}
+
+type TrendData {
+  period: String!
+  value: Float!
+}
+
+type TrendsStats {
+  adoptionTrend: [TrendData!]!
+  productionTrend: [TrendData!]!
+}
+
+input UpdateFarmInput {
+  commune: String
+  description: String
+  district: String
+  farmerGroup: String
+  fokontany: String
+  gpsLatitude: String
+  gpsLongitude: String
+  id: Int!
+  isBeneficiary: Boolean
+  name: String
+  notes: String
+  phoneNumber: String
+  programAffiliation: String
+  region: String
+  totalSurface: Float
+  userId: Int
+  village: String
+}
+
+input UpdateHarvestInput {
+  buyer: String
+  harvestDate: String
+  id: Int!
+  notes: String
+  plotId: Int
+  quality: String
+  quantity: Float
+  salePrice: Float
+  season: String
+  unit: String
+}
+
+input UpdatePlotInput {
+  actualYield: Float
+  cropType: String
+  cropVariety: String
+  description: String
+  expectedYield: Float
+  farmId: Int
+  harvestDate: DateTime
+  id: Int!
+  irrigationType: String
+  name: String
+  notes: String
+  plantingDate: DateTime
+  slope: Float
+  soilPH: Float
+  soilTestDate: DateTime
+  soilType: String
+  surface: Float
+}
+
+input UpdatePracticeInput {
+  adoptionDate: DateTime
+  challenges: String
+  description: String
+  farmId: Int
+  id: Int!
+  isStillPracticed: Boolean
+  perceivedBenefit: String
+  practiceType: String
+  recommendation: String
+  satisfactionRating: Float
+  sourceOfKnowledge: String
+  specificTechnique: String
+  surface: Float
+  yieldImprovement: Float
+}
+
+type User {
+  createdAt: DateTime!
+  district: String
+  email: String!
+  id: Int!
+  isActive: Boolean!
+  lastLogin: DateTime
+  name: String!
+  region: String
+  role: String!
+  updatedAt: DateTime!
+}
+
+input VerifyResetTokenInput {
+  token: String!
+}
+
+type VerifyResetTokenResponse {
+  isValid: Boolean!
+}

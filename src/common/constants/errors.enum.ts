@@ -1,0 +1,31 @@
+export enum ErrorCodes {
+  UNAUTHORIZED = 'UNAUTHORIZED',
+  FORBIDDEN = 'FORBIDDEN',
+  NOT_FOUND = 'NOT_FOUND',
+  CONFLICT = 'CONFLICT',
+  BAD_REQUEST = 'BAD_REQUEST',
+  INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR',
+  VALIDATION_ERROR = 'VALIDATION_ERROR',
+  INVALID_CREDENTIALS = 'INVALID_CREDENTIALS',
+  TOKEN_EXPIRED = 'TOKEN_EXPIRED',
+  TOKEN_INVALID = 'TOKEN_INVALID',
+  ACCOUNT_LOCKED = 'ACCOUNT_LOCKED',
+  EMAIL_ALREADY_EXISTS = 'EMAIL_ALREADY_EXISTS',
+  PASSWORD_TOO_WEAK = 'PASSWORD_TOO_WEAK',
+}
+
+export const ErrorMessages = {
+  [ErrorCodes.UNAUTHORIZED]: 'Vous devez être authentifié pour accéder à cette ressource',
+  [ErrorCodes.FORBIDDEN]: 'Vous n\'avez pas les droits nécessaires',
+  [ErrorCodes.NOT_FOUND]: 'La ressource demandée n\'existe pas',
+  [ErrorCodes.CONFLICT]: 'Conflit avec une ressource existante',
+  [ErrorCodes.BAD_REQUEST]: 'La requête est invalide',
+  [ErrorCodes.INTERNAL_SERVER_ERROR]: 'Une erreur interne est survenue',
+  [ErrorCodes.VALIDATION_ERROR]: 'Les données fournies sont invalides',
+  [ErrorCodes.INVALID_CREDENTIALS]: 'Email ou mot de passe incorrect',
+  [ErrorCodes.TOKEN_EXPIRED]: 'Votre session a expiré',
+  [ErrorCodes.TOKEN_INVALID]: 'Token invalide',
+  [ErrorCodes.ACCOUNT_LOCKED]: 'Compte verrouillé suite à trop de tentatives',
+  [ErrorCodes.EMAIL_ALREADY_EXISTS]: 'Cet email est déjà utilisé',
+  [ErrorCodes.PASSWORD_TOO_WEAK]: 'Le mot de passe est trop faible',
+};
